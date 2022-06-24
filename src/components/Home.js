@@ -1,6 +1,6 @@
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router";
-import { useUserAuth } from "../context/userAuthContext";
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
+import { useUserAuth } from '../context/userAuthContext';
 
 const Home = () => {
   const { logOut, user } = useUserAuth();
@@ -8,7 +8,7 @@ const Home = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate("/");
+      navigate('/');
     } catch (error) {
       console.log(error.message);
     }
@@ -17,7 +17,9 @@ const Home = () => {
   return (
     <>
       <div className="p-4 box mt-3 text-center">
-        Hello Welcome <br />
+        Hello{' '}
+        {user.displayName ? user.displayName : user.email ? user.email : ''}{' '}
+        <br />
       </div>
       <div className="d-grid gap-2">
         <Button variant="primary" onClick={handleLogout}>
@@ -29,6 +31,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
