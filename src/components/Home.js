@@ -17,8 +17,7 @@ const Home = () => {
   return (
     <>
       <div className="p-4 box mt-3 text-center">
-        Hello{' '}
-        {user.displayName ? user.displayName : user.email ? user.email : ''}{' '}
+        Hello {user ? (user.displayName ? user.displayName : user.email) : ''}{' '}
         <br />
       </div>
       <div className="d-grid gap-2">

@@ -6,6 +6,7 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
+  sendEmailVerification,
 } from 'firebase/auth';
 
 import { auth } from '../firebase-config';
@@ -19,13 +20,16 @@ export function UserAuthContextProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
   function signUp(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      logIn(email, password)
+    );
   }
   function logOut() {
     return signOut(auth);
   }
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
+    console.log(googleAuthProvider);
     return signInWithPopup(auth, googleAuthProvider);
   }
 
