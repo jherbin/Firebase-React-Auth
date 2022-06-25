@@ -21,7 +21,7 @@ export function UserAuthContextProvider({ children }) {
   }
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password).then(
-      logIn(email, password)
+      setTimeout(logIn(email, password), 1000)
     );
   }
   function logOut() {
